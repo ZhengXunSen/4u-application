@@ -1,1 +1,1 @@
-# 4u-application
+# 资讯类项目
