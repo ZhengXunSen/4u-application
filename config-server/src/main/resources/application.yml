@@ -28,7 +28,7 @@ spring:
   rabbitmq:
     username: zxs
     password: zxs123
-    addresses: zxs-1
+    host: zxs
     port: 5672
     virtual-host: zxs
 eureka:
