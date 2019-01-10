@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <p>{{dataA}}</p>
+    <router-view class="route-view"></router-view>
   </div>
 </template>
 
@@ -11,13 +11,9 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus">
+#app
+  height 100%
+  width 100%
+  position absolute
 </style>
