@@ -1,24 +1,17 @@
-server:
-  port: 8781
 spring:
   application:
-    name: turbine-server
+    name: @pom.artifactId@
   profiles:
     active: dev
   cloud:
     config:
       label: 1.0.0
-      name: turbine
-      discovery:
-        enabled: true
-        service-id: config-server
+      name: @pom.artifactId@
       profile: ${spring.profiles.active}
+      username: admin
+      password: admin
+      fail-fast: true
+      uri: http://localhost:8766
     bus:
       trace:
         enabled: true
-#暴露所有监控url
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"

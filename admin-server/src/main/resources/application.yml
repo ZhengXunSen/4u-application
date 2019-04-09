@@ -1,60 +1,20 @@
-server:
-  port: 8811
+
 spring:
   profiles:
     active: dev
   application:
-    name: admin-server
-  security:
-    user:
-      name: admin
+    name: @pom.artifactId@
+  cloud:
+    config:
+      label: 1.0.0
+      name: @pom.artifactId@
+      profile: ${spring.profiles.active}
+      username: admin
       password: admin
-  mail:
-    host: smtp.jfz.com
-    username: bill.zheng@jfz.com
-    password: Zxs930422
-    properties:
-      mail.debug: false
-      mail.smtp.auth: true
-  boot:
-    admin:
-      notify:
-        mail:
-          enabled: true
-          to: 1043386358@qq.com
-          from: bill.zheng@jfz.com
-          ignore-changes:
-            -
-              "*:UP" #从任何状态到up状态都不要发邮件通知
-#暴露所有监控url
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
----
-spirng:
-  profiles: dev
-#  security:
-#    user:
-#      name: admin
-#      password: admin
-### 此处dev先注册向其中一台注册中心###
-eureka:
-  client:
-    service-url:
-#      defaultZone: http://eureka-server1:8761/eureka/,http://eureka-server2:8762/eureka/,http://eureka-server3:8763/eureka/
-      defaultZone: http://eureka-server1:8761/eureka/
-    registry-fetch-interval-seconds: 60
-  instance:
-    hostname: admin-server
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
-    lease-renewal-interval-in-seconds: 30
-    health-check-url-path: /actuator/health
-# 配置此两项以便服务器能够获取被保护的节点
-    metadata-map:
-      user.name: ${spring.security.user.name}
-      user.password: ${spring.security.user.password}
+      fail-fast: true
+      uri: http://localhost:8766
+    bus:
+      trace:
+        enabled: true
+    stream:
+      default-binder: rabbit

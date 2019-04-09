@@ -1,3 +1,5 @@
+server:
+  port: 8781
 spring:
   rabbitmq:
     virtual-host: zxs
@@ -26,3 +28,10 @@ eureka:
     registry-fetch-interval-seconds: 60
   instance:
     lease-renewal-interval-in-seconds: 30
+
+#暴露所有监控url
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

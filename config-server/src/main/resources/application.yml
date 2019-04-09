@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ZhengXunSen/cloud/     # 配置git仓库的地址
+          uri: https://github.com/ZhengXunSen/cloud/config-server     # 配置git仓库的地址
           search-paths: config/*                         # git仓库地址下的相对地址，可以配置多个，用,分割。
           username:
           password:
@@ -16,6 +16,14 @@ spring:
       default-binder: rabbit
   profiles:
     active: dev
+  boot:
+    admin:
+      username: admin
+      password: admin
+  security:
+    user:
+      name: admin
+      password: admin
 ### 刷新bus http://config-server:8766/actuator/bus-refresh
 management:
   endpoints:
